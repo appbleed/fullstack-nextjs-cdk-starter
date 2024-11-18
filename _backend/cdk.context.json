@@ -2,8 +2,8 @@
 	"globals": {
 		"appName": "fullstack-nextjs-cdk-starter",
 		"hosting": {
-			"ghTokenName": "github-token",
-			"ghOwner": "focusOtter",
+			"ghTokenName": "AWSAmplifyGitHubPATToken",
+			"ghOwner": "appbleed",
 			"repo": "fullstack-nextjs-cdk-starter"
 		}
 	},
@@ -21,7 +21,7 @@
 			"region": "ap-southeast-2"
 		}
 	},
-	"develop": {
+	"dev": {
 		"stage": "dev",
 		"env": {
 			"account": "611399853399",
