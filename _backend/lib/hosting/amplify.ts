@@ -48,6 +48,21 @@ export function createAmplifyHosting(
             }),
           ],
         }),
+        AmplifyDeploymentPolicy: new PolicyDocument({
+          statements: [
+            new PolicyStatement({
+              actions: [
+                'cloudformation:*',
+                's3:*',
+                'iam:PassRole',
+                'sts:AssumeRole',
+                'codebuild:*',
+                'codepipeline:*',
+              ],
+              resources: ['*'],
+            }),
+          ],
+        }),
       },
     }
   );
