@@ -46,39 +46,10 @@ export function createAmplifyHosting(
               actions: ["appsync:GetIntrospectionSchema"],
               resources: [`*`],
             }),
-            new PolicyStatement({
-              effect: Effect.ALLOW,
-              actions: [
-                "amplify:CreateApp",
-                "amplify:DeleteApp",
-                "amplify:UpdateApp",
-                "amplify:CreateBranch",
-                "amplify:DeleteBranch",
-                "amplify:UpdateBranch",
-                "amplify:StartDeployment",
-                "amplify:StopDeployment",
-                "amplify:ListApps",
-                "amplify:ListBranches",
-                "amplify:ListJobs",
-                "amplify:GetApp",
-                "amplify:GetBranch",
-                "amplify:GetJob",
-              ],
-              resources: [`*`],
-            }),
           ],
         }),
       },
     }
-  );
-
-  // Add trust relationship explicitly
-  amplifyDeployCDKRole.assumeRolePolicy?.addStatements(
-    new PolicyStatement({
-      effect: Effect.ALLOW,
-      principals: [new ServicePrincipal("amplify.amazonaws.com")],
-      actions: ["sts:AssumeRole"],
-    })
   );
 
   const amplifyApp = new amplify.App(scope, `${props.appName}-hosting`, {
