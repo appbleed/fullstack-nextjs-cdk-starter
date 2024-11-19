@@ -72,6 +72,15 @@ export function createAmplifyHosting(
     }
   );
 
+  // Add trust relationship explicitly
+  amplifyDeployCDKRole.assumeRolePolicy?.addStatements(
+    new PolicyStatement({
+      effect: Effect.ALLOW,
+      principals: [new ServicePrincipal("amplify.amazonaws.com")],
+      actions: ["sts:AssumeRole"],
+    })
+  );
+
   const amplifyApp = new amplify.App(scope, `${props.appName}-hosting`, {
     appName: `${props.appName}`,
     role: amplifyDeployCDKRole,
